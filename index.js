@@ -5,11 +5,13 @@ const crypto = require("crypto");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
+
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.post("/order", async (req, res) => {
   try {
